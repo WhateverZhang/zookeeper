@@ -1,0 +1,14 @@
+.idea/
+work/
+target/
+dataSources/
+.ideaDataSources/
+
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.log.*
+
+*.iml
