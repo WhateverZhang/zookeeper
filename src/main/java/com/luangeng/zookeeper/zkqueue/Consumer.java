@@ -1,6 +1,6 @@
 package com.luangeng.zookeeper.zkqueue;
 
-import com.luangeng.zookeeper.lock.DisLock;
+import com.luangeng.zookeeper.dislock.DisLock;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 

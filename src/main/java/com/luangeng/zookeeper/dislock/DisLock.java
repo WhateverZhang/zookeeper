@@ -1,4 +1,4 @@
-package com.luangeng.zookeeper.lock;
+package com.luangeng.zookeeper.dislock;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;

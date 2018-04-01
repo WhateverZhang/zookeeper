@@ -1,4 +1,4 @@
-package com.luangeng.zookeeper.lock;
+package com.luangeng.zookeeper.dislock;
 
 import org.apache.zookeeper.KeeperException;
 
