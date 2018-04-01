@@ -20,7 +20,8 @@ public class Consumer extends Thread {
 
     private DisLock lock;
 
-    Consumer() throws IOException, KeeperException, InterruptedException {
+    Consumer(String name) throws IOException, KeeperException, InterruptedException {
+        super(name);
         lock = new DisLock("queue");
         this.zk = new ZooKeeper("localhost:2181", 30000, null);
     }
@@ -36,7 +37,7 @@ public class Consumer extends Thread {
             String first = list.get(0);
             byte[] b = zk.getData(root + "/" + first, false, null);
             String str = new String(b);
-            System.out.println(getName() + "         get:" + str);
+            System.out.println(getName() + " get:" + str);
             zk.delete(root + "/" + first, -1);
         } finally {
             lock.unlock();
@@ -49,7 +50,7 @@ public class Consumer extends Thread {
         try {
             while (true) {
                 if (consume()) {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                 }
             }
         } catch (KeeperException e) {

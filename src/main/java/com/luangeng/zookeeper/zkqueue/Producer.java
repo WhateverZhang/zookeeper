@@ -18,7 +18,8 @@ public class Producer extends Thread {
     private ZooKeeper zk;
     private Random ran = new Random();
 
-    Producer() throws IOException {
+    Producer(String name) throws IOException {
+        super(name);
         this.zk = new ZooKeeper("localhost:2181", 30000, null);
     }
 
@@ -32,7 +33,7 @@ public class Producer extends Thread {
     public void run() {
         try {
             while (true) {
-                String msg = "msg" + count.getAndIncrement();
+                String msg = this.getName() + "->" + count.getAndIncrement();
                 produce(msg);
                 Thread.sleep(ran.nextInt(1000));
             }

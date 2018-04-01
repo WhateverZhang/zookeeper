@@ -67,7 +67,7 @@ public class DisLock implements Watcher {
             Collections.sort(ls);
             if (path.equals(LOCK_ROOT + lockName + "/" + ls.get(0))) {
                 acquired = true;
-                System.out.println(Thread.currentThread().getName() + " get lock");
+                //System.out.println(Thread.currentThread().getName() + " get lock");
                 return true;
             }
 
@@ -94,7 +94,7 @@ public class DisLock implements Watcher {
         try {
             zk.delete(path, -1);
             acquired = false;
-            System.out.println(Thread.currentThread().getName() + " free lock");
+            //System.out.println(Thread.currentThread().getName() + " free lock");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (KeeperException e) {
@@ -109,7 +109,7 @@ public class DisLock implements Watcher {
             if (s == null) {
                 //等到锁，返回
                 acquired = true;
-                System.out.println(Thread.currentThread().getName() + " get lock");
+                //System.out.println(Thread.currentThread().getName() + " get lock");
                 return;
             }
             this.wait();

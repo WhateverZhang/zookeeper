@@ -24,13 +24,13 @@ public class ZkQueue implements Watcher {
         zk.create(root, "queue".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 
         //模拟2个生产者
-        new Producer().start();
-        new Producer().start();
+        new Producer("p1").start();
+        new Producer("p2").start();
 
         //模拟3个消费者
-        new Consumer().start();
-        new Consumer().start();
-        new Consumer().start();
+        new Consumer("c1").start();
+        new Consumer("c2").start();
+        new Consumer("c3").start();
 
         Scanner s = new Scanner(System.in);
         s.nextLine();
